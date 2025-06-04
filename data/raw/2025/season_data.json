@@ -1,0 +1,14 @@
+{
+    "MRData": {
+        "xmlns": "http://ergast.com/mrd/1.5",
+        "series": "f1",
+        "url": "http://ergast.com/api/f1/2025.json",
+        "limit": "100",
+        "offset": "0",
+        "total": "0",
+        "RaceTable": {
+            "season": "2025",
+            "Races": []
+        }
+    }
+}

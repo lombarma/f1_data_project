@@ -1,0 +1,405 @@
+[2025-06-04T08:31:04.002+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-06-04T08:31:04.016+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: f1_data_extraction_pipeline.load_data_to_postgres manual__2025-06-04T08:30:30+00:00 [queued]>
+[2025-06-04T08:31:04.020+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: f1_data_extraction_pipeline.load_data_to_postgres manual__2025-06-04T08:30:30+00:00 [queued]>
+[2025-06-04T08:31:04.020+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-06-04T08:31:04.025+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_data_to_postgres> on 2025-06-04 08:30:30+00:00
+[2025-06-04T08:31:04.029+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'f1_data_extraction_pipeline', 'load_data_to_postgres', 'manual__2025-06-04T08:30:30+00:00', '--job-id', '20', '--raw', '--subdir', 'DAGS_FOLDER/f1_pipeline.py', '--cfg-path', '/tmp/tmppb5516f8']
+[2025-06-04T08:31:04.033+0000] {standard_task_runner.py:91} INFO - Job 20: Subtask load_data_to_postgres
+[2025-06-04T08:31:04.129+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=679) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-06-04T08:31:04.130+0000] {standard_task_runner.py:63} INFO - Started process 680 to run task
+[2025-06-04T08:31:04.147+0000] {task_command.py:426} INFO - Running <TaskInstance: f1_data_extraction_pipeline.load_data_to_postgres manual__2025-06-04T08:30:30+00:00 [running]> on host 98906ef28ad4
+[2025-06-04T08:31:04.180+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='f1_data_extraction_pipeline' AIRFLOW_CTX_TASK_ID='load_data_to_postgres' AIRFLOW_CTX_EXECUTION_DATE='2025-06-04T08:30:30+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-04T08:30:30+00:00'
+[2025-06-04T08:31:04.180+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-06-04T08:31:04.185+0000] {logging_mixin.py:188} INFO - Début du chargement en base de données pour l'année 2022.
+[2025-06-04T08:31:04.185+0000] {logging_mixin.py:188} INFO - Nettoyage préalable : DELETE FROM results WHERE race_id LIKE '2022_%';
+[2025-06-04T08:31:04.193+0000] {base.py:84} INFO - Using connection ID 'f1_postgres_db' for task execution.
+[2025-06-04T08:31:04.195+0000] {sql.py:487} INFO - Running statement: DELETE FROM results WHERE race_id LIKE '2022_%';, parameters: None
+[2025-06-04T08:31:04.196+0000] {sql.py:496} INFO - Rows affected: 0
+[2025-06-04T08:31:04.196+0000] {logging_mixin.py:188} INFO - Nettoyage préalable : DELETE FROM races WHERE year = 2022;
+[2025-06-04T08:31:04.199+0000] {base.py:84} INFO - Using connection ID 'f1_postgres_db' for task execution.
+[2025-06-04T08:31:04.202+0000] {sql.py:487} INFO - Running statement: DELETE FROM races WHERE year = 2022;, parameters: None
+[2025-06-04T08:31:04.202+0000] {sql.py:496} INFO - Rows affected: 0
+[2025-06-04T08:31:04.202+0000] {logging_mixin.py:188} INFO - 
+--- Début du traitement pour circuits_info.csv vers table circuits ---
+[2025-06-04T08:31:04.208+0000] {base.py:84} INFO - Using connection ID 'f1_postgres_db' for task execution.
+[2025-06-04T08:31:04.217+0000] {logging_mixin.py:188} INFO - Erreur générique lors du chargement de /opt/***/data/processed/2022/circuits_info.csv vers la table circuits:
+[2025-06-04T08:31:04.222+0000] {logging_mixin.py:188} WARNING - Traceback (most recent call last):
+[2025-06-04T08:31:04.222+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+[2025-06-04T08:31:04.223+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+                                     ^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.223+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+[2025-06-04T08:31:04.223+0000] {logging_mixin.py:188} WARNING - psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "circuits_pkey"
+DETAIL:  Key (circuit_id)=(bahrain) already exists.
+[2025-06-04T08:31:04.223+0000] {logging_mixin.py:188} WARNING - 
+The above exception was the direct cause of the following exception:
+[2025-06-04T08:31:04.223+0000] {logging_mixin.py:188} WARNING - Traceback (most recent call last):
+[2025-06-04T08:31:04.223+0000] {logging_mixin.py:188} WARNING -   File "/opt/***/plugins/etl_scripts/load_to_postgres.py", line 44, in _load_single_csv_to_db
+    df.to_sql(name=table_name, con=engine, if_exists='append', index=False, schema='public')
+[2025-06-04T08:31:04.223+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/util/_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.224+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/core/generic.py", line 3008, in to_sql
+    return sql.to_sql(
+           ^^^^^^^^^^^
+[2025-06-04T08:31:04.224+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 788, in to_sql
+    return pandas_sql.to_sql(
+           ^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.224+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1958, in to_sql
+    total_inserted = sql_engine.insert_records(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.224+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1507, in insert_records
+    raise err
+[2025-06-04T08:31:04.224+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1498, in insert_records
+    return table.insert(chunksize=chunksize, method=method)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.224+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1059, in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.224+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 951, in _execute_insert
+    result = conn.execute(self.table.insert(), data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.224+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.224+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.224+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.224+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+[2025-06-04T08:31:04.224+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+[2025-06-04T08:31:04.224+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+[2025-06-04T08:31:04.225+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+[2025-06-04T08:31:04.225+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+                                     ^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.225+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+[2025-06-04T08:31:04.225+0000] {logging_mixin.py:188} WARNING - sqlalchemy.exc.IntegrityError: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "circuits_pkey"
+DETAIL:  Key (circuit_id)=(bahrain) already exists.
+
+[SQL: INSERT INTO public.circuits (circuit_id, circuit_name, locality, country) VALUES (%(circuit_id)s, %(circuit_name)s, %(locality)s, %(country)s)]
+[parameters: ({'circuit_id': 'bahrain', 'circuit_name': 'Bahrain International Circuit', 'locality': 'Sakhir', 'country': 'Bahrain'}, {'circuit_id': 'jeddah', 'circuit_name': 'Jeddah Corniche Circuit', 'locality': 'Jeddah', 'country': 'Saudi Arabia'}, {'circuit_id': 'albert_park', 'circuit_name': 'Albert Park Grand Prix Circuit', 'locality': 'Melbourne', 'country': 'Australia'}, {'circuit_id': 'imola', 'circuit_name': 'Autodromo Enzo e Dino Ferrari', 'locality': 'Imola', 'country': 'Italy'}, {'circuit_id': 'miami', 'circuit_name': 'Miami International Autodrome', 'locality': 'Miami', 'country': 'USA'}, {'circuit_id': 'catalunya', 'circuit_name': 'Circuit de Barcelona-Catalunya', 'locality': 'Montmeló', 'country': 'Spain'}, {'circuit_id': 'monaco', 'circuit_name': 'Circuit de Monaco', 'locality': 'Monte-Carlo', 'country': 'Monaco'}, {'circuit_id': 'baku', 'circuit_name': 'Baku City Circuit', 'locality': 'Baku', 'country': 'Azerbaijan'}  ... displaying 10 of 22 total bound parameter sets ...  {'circuit_id': 'interlagos', 'circuit_name': 'Autódromo José Carlos Pace', 'locality': 'São Paulo', 'country': 'Brazil'}, {'circuit_id': 'yas_marina', 'circuit_name': 'Yas Marina Circuit', 'locality': 'Abu Dhabi', 'country': 'UAE'})]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+[2025-06-04T08:31:04.225+0000] {logging_mixin.py:188} INFO - --- Résultat pour circuits_info.csv: ÉCHEC ---
+[2025-06-04T08:31:04.225+0000] {logging_mixin.py:188} INFO - 
+--- Début du traitement pour drivers.csv vers table drivers ---
+[2025-06-04T08:31:04.230+0000] {base.py:84} INFO - Using connection ID 'f1_postgres_db' for task execution.
+[2025-06-04T08:31:04.235+0000] {logging_mixin.py:188} INFO - Erreur générique lors du chargement de /opt/***/data/processed/2022/drivers.csv vers la table drivers:
+[2025-06-04T08:31:04.236+0000] {logging_mixin.py:188} WARNING - Traceback (most recent call last):
+[2025-06-04T08:31:04.236+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+[2025-06-04T08:31:04.236+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+                                     ^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.236+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+[2025-06-04T08:31:04.237+0000] {logging_mixin.py:188} WARNING - psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "drivers_pkey"
+DETAIL:  Key (driver_id)=(leclerc) already exists.
+[2025-06-04T08:31:04.237+0000] {logging_mixin.py:188} WARNING - 
+The above exception was the direct cause of the following exception:
+[2025-06-04T08:31:04.237+0000] {logging_mixin.py:188} WARNING - Traceback (most recent call last):
+[2025-06-04T08:31:04.237+0000] {logging_mixin.py:188} WARNING -   File "/opt/***/plugins/etl_scripts/load_to_postgres.py", line 44, in _load_single_csv_to_db
+    df.to_sql(name=table_name, con=engine, if_exists='append', index=False, schema='public')
+[2025-06-04T08:31:04.237+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/util/_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.237+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/core/generic.py", line 3008, in to_sql
+    return sql.to_sql(
+           ^^^^^^^^^^^
+[2025-06-04T08:31:04.237+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 788, in to_sql
+    return pandas_sql.to_sql(
+           ^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.237+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1958, in to_sql
+    total_inserted = sql_engine.insert_records(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.237+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1507, in insert_records
+    raise err
+[2025-06-04T08:31:04.237+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1498, in insert_records
+    return table.insert(chunksize=chunksize, method=method)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.238+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1059, in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.238+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 951, in _execute_insert
+    result = conn.execute(self.table.insert(), data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.238+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.238+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.238+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.238+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+[2025-06-04T08:31:04.238+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+[2025-06-04T08:31:04.238+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+[2025-06-04T08:31:04.238+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+[2025-06-04T08:31:04.238+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+                                     ^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.238+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+[2025-06-04T08:31:04.238+0000] {logging_mixin.py:188} WARNING - sqlalchemy.exc.IntegrityError: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "drivers_pkey"
+DETAIL:  Key (driver_id)=(leclerc) already exists.
+
+[SQL: INSERT INTO public.drivers (driver_id, permanent_number, code, given_name, family_name, date_of_birth, nationality) VALUES (%(driver_id)s, %(permanent_number)s, %(code)s, %(given_name)s, %(family_name)s, %(date_of_birth)s, %(nationality)s)]
+[parameters: ({'driver_id': 'leclerc', 'permanent_number': 16, 'code': 'LEC', 'given_name': 'Charles', 'family_name': 'Leclerc', 'date_of_birth': '1997-10-16', 'nationality': 'Monegasque'}, {'driver_id': 'sainz', 'permanent_number': 55, 'code': 'SAI', 'given_name': 'Carlos', 'family_name': 'Sainz', 'date_of_birth': '1994-09-01', 'nationality': 'Spanish'}, {'driver_id': 'hamilton', 'permanent_number': 44, 'code': 'HAM', 'given_name': 'Lewis', 'family_name': 'Hamilton', 'date_of_birth': '1985-01-07', 'nationality': 'British'}, {'driver_id': 'russell', 'permanent_number': 63, 'code': 'RUS', 'given_name': 'George', 'family_name': 'Russell', 'date_of_birth': '1998-02-15', 'nationality': 'British'}, {'driver_id': 'kevin_magnussen', 'permanent_number': 20, 'code': 'MAG', 'given_name': 'Kevin', 'family_name': 'Magnussen', 'date_of_birth': '1992-10-05', 'nationality': 'Danish'}, {'driver_id': 'bottas', 'permanent_number': 77, 'code': 'BOT', 'given_name': 'Valtteri', 'family_name': 'Bottas', 'date_of_birth': '1989-08-28', 'nationality': 'Finnish'}, {'driver_id': 'ocon', 'permanent_number': 31, 'code': 'OCO', 'given_name': 'Esteban', 'family_name': 'Ocon', 'date_of_birth': '1996-09-17', 'nationality': 'French'}, {'driver_id': 'tsunoda', 'permanent_number': 22, 'code': 'TSU', 'given_name': 'Yuki', 'family_name': 'Tsunoda', 'date_of_birth': '2000-05-11', 'nationality': 'Japanese'}  ... displaying 10 of 21 total bound parameter sets ...  {'driver_id': 'gasly', 'permanent_number': 10, 'code': 'GAS', 'given_name': 'Pierre', 'family_name': 'Gasly', 'date_of_birth': '1996-02-07', 'nationality': 'French'}, {'driver_id': 'vettel', 'permanent_number': 5, 'code': 'VET', 'given_name': 'Sebastian', 'family_name': 'Vettel', 'date_of_birth': '1987-07-03', 'nationality': 'German'})]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+[2025-06-04T08:31:04.238+0000] {logging_mixin.py:188} INFO - --- Résultat pour drivers.csv: ÉCHEC ---
+[2025-06-04T08:31:04.238+0000] {logging_mixin.py:188} INFO - 
+--- Début du traitement pour constructors.csv vers table constructors ---
+[2025-06-04T08:31:04.242+0000] {base.py:84} INFO - Using connection ID 'f1_postgres_db' for task execution.
+[2025-06-04T08:31:04.247+0000] {logging_mixin.py:188} INFO - Erreur générique lors du chargement de /opt/***/data/processed/2022/constructors.csv vers la table constructors:
+[2025-06-04T08:31:04.248+0000] {logging_mixin.py:188} WARNING - Traceback (most recent call last):
+[2025-06-04T08:31:04.248+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+[2025-06-04T08:31:04.248+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+                                     ^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.248+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+[2025-06-04T08:31:04.248+0000] {logging_mixin.py:188} WARNING - psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "constructors_pkey"
+DETAIL:  Key (constructor_id)=(ferrari) already exists.
+[2025-06-04T08:31:04.249+0000] {logging_mixin.py:188} WARNING - 
+The above exception was the direct cause of the following exception:
+[2025-06-04T08:31:04.249+0000] {logging_mixin.py:188} WARNING - Traceback (most recent call last):
+[2025-06-04T08:31:04.249+0000] {logging_mixin.py:188} WARNING -   File "/opt/***/plugins/etl_scripts/load_to_postgres.py", line 44, in _load_single_csv_to_db
+    df.to_sql(name=table_name, con=engine, if_exists='append', index=False, schema='public')
+[2025-06-04T08:31:04.249+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/util/_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.249+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/core/generic.py", line 3008, in to_sql
+    return sql.to_sql(
+           ^^^^^^^^^^^
+[2025-06-04T08:31:04.249+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 788, in to_sql
+    return pandas_sql.to_sql(
+           ^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.249+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1958, in to_sql
+    total_inserted = sql_engine.insert_records(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.249+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1507, in insert_records
+    raise err
+[2025-06-04T08:31:04.249+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1498, in insert_records
+    return table.insert(chunksize=chunksize, method=method)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.249+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1059, in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.250+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 951, in _execute_insert
+    result = conn.execute(self.table.insert(), data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.250+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.250+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.250+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.250+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+[2025-06-04T08:31:04.250+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+[2025-06-04T08:31:04.250+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+[2025-06-04T08:31:04.250+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+[2025-06-04T08:31:04.250+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+                                     ^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.250+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+[2025-06-04T08:31:04.250+0000] {logging_mixin.py:188} WARNING - sqlalchemy.exc.IntegrityError: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "constructors_pkey"
+DETAIL:  Key (constructor_id)=(ferrari) already exists.
+
+[SQL: INSERT INTO public.constructors (constructor_id, name, nationality) VALUES (%(constructor_id)s, %(name)s, %(nationality)s)]
+[parameters: ({'constructor_id': 'ferrari', 'name': 'Ferrari', 'nationality': 'Italian'}, {'constructor_id': 'mercedes', 'name': 'Mercedes', 'nationality': 'German'}, {'constructor_id': 'haas', 'name': 'Haas F1 Team', 'nationality': 'American'}, {'constructor_id': 'alfa', 'name': 'Alfa Romeo', 'nationality': 'Swiss'}, {'constructor_id': 'alpine', 'name': 'Alpine F1 Team', 'nationality': 'French'}, {'constructor_id': 'alphatauri', 'name': 'AlphaTauri', 'nationality': 'Italian'}, {'constructor_id': 'aston_martin', 'name': 'Aston Martin', 'nationality': 'British'}, {'constructor_id': 'williams', 'name': 'Williams', 'nationality': 'British'}, {'constructor_id': 'mclaren', 'name': 'McLaren', 'nationality': 'British'}, {'constructor_id': 'red_bull', 'name': 'Red Bull', 'nationality': 'Austrian'})]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+[2025-06-04T08:31:04.250+0000] {logging_mixin.py:188} INFO - --- Résultat pour constructors.csv: ÉCHEC ---
+[2025-06-04T08:31:04.251+0000] {logging_mixin.py:188} INFO - 
+--- Début du traitement pour races_schedule.csv vers table races ---
+[2025-06-04T08:31:04.255+0000] {base.py:84} INFO - Using connection ID 'f1_postgres_db' for task execution.
+[2025-06-04T08:31:04.262+0000] {logging_mixin.py:188} INFO - Erreur générique lors du chargement de /opt/***/data/processed/2022/races_schedule.csv vers la table races:
+[2025-06-04T08:31:04.263+0000] {logging_mixin.py:188} WARNING - Traceback (most recent call last):
+[2025-06-04T08:31:04.263+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+[2025-06-04T08:31:04.263+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+                                     ^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.263+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+[2025-06-04T08:31:04.263+0000] {logging_mixin.py:188} WARNING - psycopg2.errors.ForeignKeyViolation: insert or update on table "races" violates foreign key constraint "races_circuit_id_fkey"
+DETAIL:  Key (circuit_id)=(ricard) is not present in table "circuits".
+[2025-06-04T08:31:04.263+0000] {logging_mixin.py:188} WARNING - 
+The above exception was the direct cause of the following exception:
+[2025-06-04T08:31:04.263+0000] {logging_mixin.py:188} WARNING - Traceback (most recent call last):
+[2025-06-04T08:31:04.264+0000] {logging_mixin.py:188} WARNING -   File "/opt/***/plugins/etl_scripts/load_to_postgres.py", line 44, in _load_single_csv_to_db
+    df.to_sql(name=table_name, con=engine, if_exists='append', index=False, schema='public')
+[2025-06-04T08:31:04.264+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/util/_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.264+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/core/generic.py", line 3008, in to_sql
+    return sql.to_sql(
+           ^^^^^^^^^^^
+[2025-06-04T08:31:04.264+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 788, in to_sql
+    return pandas_sql.to_sql(
+           ^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.264+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1958, in to_sql
+    total_inserted = sql_engine.insert_records(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.264+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1507, in insert_records
+    raise err
+[2025-06-04T08:31:04.264+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1498, in insert_records
+    return table.insert(chunksize=chunksize, method=method)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.264+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1059, in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.264+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 951, in _execute_insert
+    result = conn.execute(self.table.insert(), data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.264+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.264+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.264+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.265+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+[2025-06-04T08:31:04.265+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+[2025-06-04T08:31:04.265+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+[2025-06-04T08:31:04.265+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+[2025-06-04T08:31:04.265+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+                                     ^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.265+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+[2025-06-04T08:31:04.265+0000] {logging_mixin.py:188} WARNING - sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) insert or update on table "races" violates foreign key constraint "races_circuit_id_fkey"
+DETAIL:  Key (circuit_id)=(ricard) is not present in table "circuits".
+
+[SQL: INSERT INTO public.races (race_id, year, round, race_name, circuit_id, circuit_name_denorm, circuit_locality_denorm, circuit_country_denorm, date, time) VALUES (%(race_id)s, %(year)s, %(round)s, %(race_name)s, %(circuit_id)s, %(circuit_name_denorm)s, %(circuit_locality_denorm)s, %(circuit_country_denorm)s, %(date)s, %(time)s)]
+[parameters: ({'race_id': '2022_1', 'year': 2022, 'round': 1, 'race_name': 'Bahrain Grand Prix', 'circuit_id': 'bahrain', 'circuit_name_denorm': 'Bahrain International Circuit', 'circuit_locality_denorm': 'Sakhir', 'circuit_country_denorm': 'Bahrain', 'date': '2022-03-20', 'time': '15:00:00Z'}, {'race_id': '2022_2', 'year': 2022, 'round': 2, 'race_name': 'Saudi Arabian Grand Prix', 'circuit_id': 'jeddah', 'circuit_name_denorm': 'Jeddah Corniche Circuit', 'circuit_locality_denorm': 'Jeddah', 'circuit_country_denorm': 'Saudi Arabia', 'date': '2022-03-27', 'time': '17:00:00Z'}, {'race_id': '2022_3', 'year': 2022, 'round': 3, 'race_name': 'Australian Grand Prix', 'circuit_id': 'albert_park', 'circuit_name_denorm': 'Albert Park Grand Prix Circuit', 'circuit_locality_denorm': 'Melbourne', 'circuit_country_denorm': 'Australia', 'date': '2022-04-10', 'time': '05:00:00Z'}, {'race_id': '2022_4', 'year': 2022, 'round': 4, 'race_name': 'Emilia Romagna Grand Prix', 'circuit_id': 'imola', 'circuit_name_denorm': 'Autodromo Enzo e Dino Ferrari', 'circuit_locality_denorm': 'Imola', 'circuit_country_denorm': 'Italy', 'date': '2022-04-24', 'time': '13:00:00Z'}, {'race_id': '2022_5', 'year': 2022, 'round': 5, 'race_name': 'Miami Grand Prix', 'circuit_id': 'miami', 'circuit_name_denorm': 'Miami International Autodrome', 'circuit_locality_denorm': 'Miami', 'circuit_country_denorm': 'USA', 'date': '2022-05-08', 'time': '19:30:00Z'}, {'race_id': '2022_6', 'year': 2022, 'round': 6, 'race_name': 'Spanish Grand Prix', 'circuit_id': 'catalunya', 'circuit_name_denorm': 'Circuit de Barcelona-Catalunya', 'circuit_locality_denorm': 'Montmeló', 'circuit_country_denorm': 'Spain', 'date': '2022-05-22', 'time': '13:00:00Z'}, {'race_id': '2022_7', 'year': 2022, 'round': 7, 'race_name': 'Monaco Grand Prix', 'circuit_id': 'monaco', 'circuit_name_denorm': 'Circuit de Monaco', 'circuit_locality_denorm': 'Monte-Carlo', 'circuit_country_denorm': 'Monaco', 'date': '2022-05-29', 'time': '13:00:00Z'}, {'race_id': '2022_8', 'year': 2022, 'round': 8, 'race_name': 'Azerbaijan Grand Prix', 'circuit_id': 'baku', 'circuit_name_denorm': 'Baku City Circuit', 'circuit_locality_denorm': 'Baku', 'circuit_country_denorm': 'Azerbaijan', 'date': '2022-06-12', 'time': '11:00:00Z'}  ... displaying 10 of 22 total bound parameter sets ...  {'race_id': '2022_21', 'year': 2022, 'round': 21, 'race_name': 'São Paulo Grand Prix', 'circuit_id': 'interlagos', 'circuit_name_denorm': 'Autódromo José Carlos Pace', 'circuit_locality_denorm': 'São Paulo', 'circuit_country_denorm': 'Brazil', 'date': '2022-11-13', 'time': '18:00:00Z'}, {'race_id': '2022_22', 'year': 2022, 'round': 22, 'race_name': 'Abu Dhabi Grand Prix', 'circuit_id': 'yas_marina', 'circuit_name_denorm': 'Yas Marina Circuit', 'circuit_locality_denorm': 'Abu Dhabi', 'circuit_country_denorm': 'UAE', 'date': '2022-11-20', 'time': '13:00:00Z'})]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+[2025-06-04T08:31:04.265+0000] {logging_mixin.py:188} INFO - --- Résultat pour races_schedule.csv: ÉCHEC ---
+[2025-06-04T08:31:04.265+0000] {logging_mixin.py:188} INFO - 
+--- Début du traitement pour detailed_results.csv vers table results ---
+[2025-06-04T08:31:04.270+0000] {base.py:84} INFO - Using connection ID 'f1_postgres_db' for task execution.
+[2025-06-04T08:31:04.281+0000] {logging_mixin.py:188} INFO - Erreur générique lors du chargement de /opt/***/data/processed/2022/detailed_results.csv vers la table results:
+[2025-06-04T08:31:04.282+0000] {logging_mixin.py:188} WARNING - Traceback (most recent call last):
+[2025-06-04T08:31:04.282+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+[2025-06-04T08:31:04.282+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+                                     ^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.282+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+[2025-06-04T08:31:04.282+0000] {logging_mixin.py:188} WARNING - psycopg2.errors.ForeignKeyViolation: insert or update on table "results" violates foreign key constraint "results_race_id_fkey"
+DETAIL:  Key (race_id)=(2022_1) is not present in table "races".
+[2025-06-04T08:31:04.282+0000] {logging_mixin.py:188} WARNING - 
+The above exception was the direct cause of the following exception:
+[2025-06-04T08:31:04.282+0000] {logging_mixin.py:188} WARNING - Traceback (most recent call last):
+[2025-06-04T08:31:04.283+0000] {logging_mixin.py:188} WARNING -   File "/opt/***/plugins/etl_scripts/load_to_postgres.py", line 44, in _load_single_csv_to_db
+    df.to_sql(name=table_name, con=engine, if_exists='append', index=False, schema='public')
+[2025-06-04T08:31:04.283+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/util/_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.283+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/core/generic.py", line 3008, in to_sql
+    return sql.to_sql(
+           ^^^^^^^^^^^
+[2025-06-04T08:31:04.283+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 788, in to_sql
+    return pandas_sql.to_sql(
+           ^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.283+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1958, in to_sql
+    total_inserted = sql_engine.insert_records(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.283+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1507, in insert_records
+    raise err
+[2025-06-04T08:31:04.283+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1498, in insert_records
+    return table.insert(chunksize=chunksize, method=method)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.283+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1059, in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.283+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 951, in _execute_insert
+    result = conn.execute(self.table.insert(), data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.283+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.283+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.283+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.284+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+[2025-06-04T08:31:04.284+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+[2025-06-04T08:31:04.284+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+[2025-06-04T08:31:04.284+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+[2025-06-04T08:31:04.284+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+                                     ^^^^^^^^^^^^^^^^^^^^^
+[2025-06-04T08:31:04.284+0000] {logging_mixin.py:188} WARNING -   File "/home/***/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+[2025-06-04T08:31:04.284+0000] {logging_mixin.py:188} WARNING - sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) insert or update on table "results" violates foreign key constraint "results_race_id_fkey"
+DETAIL:  Key (race_id)=(2022_1) is not present in table "races".
+
+[SQL: INSERT INTO public.results (race_id, driver_id, constructor_id, car_number, grid_position, final_position, position_text, points, laps_completed, status, time_millis, time_text) VALUES (%(race_id)s, %(driver_id)s, %(constructor_id)s, %(car_number)s, %(grid_position)s, %(final_position)s, %(position_text)s, %(points)s, %(laps_completed)s, %(status)s, %(time_millis)s, %(time_text)s)]
+[parameters: ({'race_id': '2022_1', 'driver_id': 'leclerc', 'constructor_id': 'ferrari', 'car_number': 16, 'grid_position': 1, 'final_position': 1, 'position_text': '1', 'points': 26.0, 'laps_completed': 57, 'status': 'Finished', 'time_millis': 5853584.0, 'time_text': '1:37:33.584'}, {'race_id': '2022_1', 'driver_id': 'sainz', 'constructor_id': 'ferrari', 'car_number': 55, 'grid_position': 3, 'final_position': 2, 'position_text': '2', 'points': 18.0, 'laps_completed': 57, 'status': 'Finished', 'time_millis': 5859182.0, 'time_text': '+5.598'}, {'race_id': '2022_1', 'driver_id': 'hamilton', 'constructor_id': 'mercedes', 'car_number': 44, 'grid_position': 5, 'final_position': 3, 'position_text': '3', 'points': 15.0, 'laps_completed': 57, 'status': 'Finished', 'time_millis': 5863259.0, 'time_text': '+9.675'}, {'race_id': '2022_1', 'driver_id': 'russell', 'constructor_id': 'mercedes', 'car_number': 63, 'grid_position': 9, 'final_position': 4, 'position_text': '4', 'points': 12.0, 'laps_completed': 57, 'status': 'Finished', 'time_millis': 5864795.0, 'time_text': '+11.211'}, {'race_id': '2022_1', 'driver_id': 'kevin_magnussen', 'constructor_id': 'haas', 'car_number': 20, 'grid_position': 7, 'final_position': 5, 'position_text': '5', 'points': 10.0, 'laps_completed': 57, 'status': 'Finished', 'time_millis': 5868338.0, 'time_text': '+14.754'}, {'race_id': '2022_1', 'driver_id': 'bottas', 'constructor_id': 'alfa', 'car_number': 77, 'grid_position': 6, 'final_position': 6, 'position_text': '6', 'points': 8.0, 'laps_completed': 57, 'status': 'Finished', 'time_millis': 5869703.0, 'time_text': '+16.119'}, {'race_id': '2022_1', 'driver_id': 'ocon', 'constructor_id': 'alpine', 'car_number': 31, 'grid_position': 11, 'final_position': 7, 'position_text': '7', 'points': 6.0, 'laps_completed': 57, 'status': 'Finished', 'time_millis': 5873007.0, 'time_text': '+19.423'}, {'race_id': '2022_1', 'driver_id': 'tsunoda', 'constructor_id': 'alphatauri', 'car_number': 22, 'grid_position': 16, 'final_position': 8, 'position_text': '8', 'points': 4.0, 'laps_completed': 57, 'status': 'Finished', 'time_millis': 5873970.0, 'time_text': '+20.386'}  ... displaying 10 of 180 total bound parameter sets ...  {'race_id': '2022_9', 'driver_id': 'mick_schumacher', 'constructor_id': 'haas', 'car_number': 47, 'grid_position': 6, 'final_position': 19, 'position_text': 'R', 'points': 0.0, 'laps_completed': 18, 'status': 'Engine', 'time_millis': None, 'time_text': None}, {'race_id': '2022_9', 'driver_id': 'perez', 'constructor_id': 'red_bull', 'car_number': 11, 'grid_position': 13, 'final_position': 20, 'position_text': 'R', 'points': 0.0, 'laps_completed': 7, 'status': 'Gearbox', 'time_millis': None, 'time_text': None})]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+[2025-06-04T08:31:04.284+0000] {logging_mixin.py:188} INFO - --- Résultat pour detailed_results.csv: ÉCHEC ---
+[2025-06-04T08:31:04.284+0000] {logging_mixin.py:188} INFO - 
+Valeur finale de overall_success avant le check: False
+[2025-06-04T08:31:04.284+0000] {logging_mixin.py:188} INFO - overall_success est False, levée de ValueError.
+[2025-06-04T08:31:04.284+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-06-04T08:31:04.284+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/plugins/etl_scripts/load_to_postgres.py", line 115, in load_all_processed_data_to_postgres
+    raise ValueError(f"Un ou plusieurs chargements en base de données ont échoué pour l'année {year}.")
+ValueError: Un ou plusieurs chargements en base de données ont échoué pour l'année 2022.
+[2025-06-04T08:31:04.289+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=f1_data_extraction_pipeline, task_id=load_data_to_postgres, run_id=manual__2025-06-04T08:30:30+00:00, execution_date=20250604T083030, start_date=20250604T083104, end_date=20250604T083104
+[2025-06-04T08:31:04.293+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 20 for task load_data_to_postgres (Un ou plusieurs chargements en base de données ont échoué pour l'année 2022.; 680)
+[2025-06-04T08:31:04.319+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-06-04T08:31:04.328+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-06-04T08:31:04.328+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

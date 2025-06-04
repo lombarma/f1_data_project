@@ -1,0 +1,67 @@
+[2025-06-04T08:31:03.609+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-06-04T08:31:03.630+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: f1_data_extraction_pipeline.transform_all_detailed_results manual__2025-06-04T08:30:30+00:00 [queued]>
+[2025-06-04T08:31:03.634+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: f1_data_extraction_pipeline.transform_all_detailed_results manual__2025-06-04T08:30:30+00:00 [queued]>
+[2025-06-04T08:31:03.635+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-06-04T08:31:03.641+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transform_all_detailed_results> on 2025-06-04 08:30:30+00:00
+[2025-06-04T08:31:03.645+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'f1_data_extraction_pipeline', 'transform_all_detailed_results', 'manual__2025-06-04T08:30:30+00:00', '--job-id', '19', '--raw', '--subdir', 'DAGS_FOLDER/f1_pipeline.py', '--cfg-path', '/tmp/tmpwk64kwnc']
+[2025-06-04T08:31:03.652+0000] {standard_task_runner.py:91} INFO - Job 19: Subtask transform_all_detailed_results
+[2025-06-04T08:31:03.803+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=677) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-06-04T08:31:03.804+0000] {standard_task_runner.py:63} INFO - Started process 678 to run task
+[2025-06-04T08:31:03.815+0000] {task_command.py:426} INFO - Running <TaskInstance: f1_data_extraction_pipeline.transform_all_detailed_results manual__2025-06-04T08:30:30+00:00 [running]> on host 98906ef28ad4
+[2025-06-04T08:31:03.855+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='f1_data_extraction_pipeline' AIRFLOW_CTX_TASK_ID='transform_all_detailed_results' AIRFLOW_CTX_EXECUTION_DATE='2025-06-04T08:30:30+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-04T08:30:30+00:00'
+[2025-06-04T08:31:03.856+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-06-04T08:31:03.861+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round [ at /opt/***/data/raw/2022/round_[_results.json
+[2025-06-04T08:31:03.862+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.863+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.863+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.863+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.864+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.864+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.865+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.865+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.865+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.866+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.866+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.866+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.867+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.867+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.867+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.867+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.868+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.868+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.868+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round 0 at /opt/***/data/raw/2022/round_0_results.json
+[2025-06-04T08:31:03.868+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.869+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.869+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.869+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.870+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.870+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.871+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.871+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.872+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.872+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.873+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.873+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.873+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.873+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.874+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.874+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.875+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.875+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.876+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.876+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.876+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round 0 at /opt/***/data/raw/2022/round_0_results.json
+[2025-06-04T08:31:03.876+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.876+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.877+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round , at /opt/***/data/raw/2022/round_,_results.json
+[2025-06-04T08:31:03.877+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round   at /opt/***/data/raw/2022/round_ _results.json
+[2025-06-04T08:31:03.878+0000] {logging_mixin.py:188} INFO - Error: Results file not found for year 2022, round ] at /opt/***/data/raw/2022/round_]_results.json
+[2025-06-04T08:31:03.886+0000] {logging_mixin.py:188} INFO - Detailed results for year 2022 saved to /opt/***/data/processed/2022/detailed_results.csv.
+[2025-06-04T08:31:03.887+0000] {logging_mixin.py:188} INFO - Drivers data for year 2022 saved to /opt/***/data/processed/2022/drivers.csv.
+[2025-06-04T08:31:03.888+0000] {logging_mixin.py:188} INFO - Constructors data for year 2022 saved to /opt/***/data/processed/2022/constructors.csv.
+[2025-06-04T08:31:03.888+0000] {python.py:237} INFO - Done. Returned value was: True
+[2025-06-04T08:31:03.888+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-06-04T08:31:03.898+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=f1_data_extraction_pipeline, task_id=transform_all_detailed_results, run_id=manual__2025-06-04T08:30:30+00:00, execution_date=20250604T083030, start_date=20250604T083103, end_date=20250604T083103
+[2025-06-04T08:31:03.944+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-06-04T08:31:03.954+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-06-04T08:31:03.956+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

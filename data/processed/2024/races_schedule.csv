@@ -1,0 +1,25 @@
+race_id,year,round,race_name,circuit_id,circuit_name_denorm,circuit_locality_denorm,circuit_country_denorm,date,time
+2024_1,2024,1,Bahrain Grand Prix,bahrain,Bahrain International Circuit,Sakhir,Bahrain,2024-03-02,15:00:00Z
+2024_2,2024,2,Saudi Arabian Grand Prix,jeddah,Jeddah Corniche Circuit,Jeddah,Saudi Arabia,2024-03-09,17:00:00Z
+2024_3,2024,3,Australian Grand Prix,albert_park,Albert Park Grand Prix Circuit,Melbourne,Australia,2024-03-24,04:00:00Z
+2024_4,2024,4,Japanese Grand Prix,suzuka,Suzuka Circuit,Suzuka,Japan,2024-04-07,05:00:00Z
+2024_5,2024,5,Chinese Grand Prix,shanghai,Shanghai International Circuit,Shanghai,China,2024-04-21,07:00:00Z
+2024_6,2024,6,Miami Grand Prix,miami,Miami International Autodrome,Miami,USA,2024-05-05,20:00:00Z
+2024_7,2024,7,Emilia Romagna Grand Prix,imola,Autodromo Enzo e Dino Ferrari,Imola,Italy,2024-05-19,13:00:00Z
+2024_8,2024,8,Monaco Grand Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,2024-05-26,13:00:00Z
+2024_9,2024,9,Canadian Grand Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,2024-06-09,18:00:00Z
+2024_10,2024,10,Spanish Grand Prix,catalunya,Circuit de Barcelona-Catalunya,Montmeló,Spain,2024-06-23,13:00:00Z
+2024_11,2024,11,Austrian Grand Prix,red_bull_ring,Red Bull Ring,Spielberg,Austria,2024-06-30,13:00:00Z
+2024_12,2024,12,British Grand Prix,silverstone,Silverstone Circuit,Silverstone,UK,2024-07-07,14:00:00Z
+2024_13,2024,13,Hungarian Grand Prix,hungaroring,Hungaroring,Budapest,Hungary,2024-07-21,13:00:00Z
+2024_14,2024,14,Belgian Grand Prix,spa,Circuit de Spa-Francorchamps,Spa,Belgium,2024-07-28,13:00:00Z
+2024_15,2024,15,Dutch Grand Prix,zandvoort,Circuit Park Zandvoort,Zandvoort,Netherlands,2024-08-25,13:00:00Z
+2024_16,2024,16,Italian Grand Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,2024-09-01,13:00:00Z
+2024_17,2024,17,Azerbaijan Grand Prix,baku,Baku City Circuit,Baku,Azerbaijan,2024-09-15,11:00:00Z
+2024_18,2024,18,Singapore Grand Prix,marina_bay,Marina Bay Street Circuit,Marina Bay,Singapore,2024-09-22,12:00:00Z
+2024_19,2024,19,United States Grand Prix,americas,Circuit of the Americas,Austin,USA,2024-10-20,19:00:00Z
+2024_20,2024,20,Mexico City Grand Prix,rodriguez,Autódromo Hermanos Rodríguez,Mexico City,Mexico,2024-10-27,20:00:00Z
+2024_21,2024,21,São Paulo Grand Prix,interlagos,Autódromo José Carlos Pace,São Paulo,Brazil,2024-11-03,17:00:00Z
+2024_22,2024,22,Las Vegas Grand Prix,vegas,Las Vegas Strip Street Circuit,Las Vegas,United States,2024-11-23,06:00:00Z
+2024_23,2024,23,Qatar Grand Prix,losail,Losail International Circuit,Al Daayen,Qatar,2024-12-01,17:00:00Z
+2024_24,2024,24,Abu Dhabi Grand Prix,yas_marina,Yas Marina Circuit,Abu Dhabi,UAE,2024-12-08,13:00:00Z

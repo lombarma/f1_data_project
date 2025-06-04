@@ -1,0 +1,23 @@
+race_id,year,round,race_name,circuit_id,circuit_name_denorm,circuit_locality_denorm,circuit_country_denorm,date,time
+2023_1,2023,1,Bahrain Grand Prix,bahrain,Bahrain International Circuit,Sakhir,Bahrain,2023-03-05,15:00:00Z
+2023_2,2023,2,Saudi Arabian Grand Prix,jeddah,Jeddah Corniche Circuit,Jeddah,Saudi Arabia,2023-03-19,17:00:00Z
+2023_3,2023,3,Australian Grand Prix,albert_park,Albert Park Grand Prix Circuit,Melbourne,Australia,2023-04-02,05:00:00Z
+2023_4,2023,4,Azerbaijan Grand Prix,baku,Baku City Circuit,Baku,Azerbaijan,2023-04-30,11:00:00Z
+2023_5,2023,5,Miami Grand Prix,miami,Miami International Autodrome,Miami,USA,2023-05-07,19:30:00Z
+2023_6,2023,6,Monaco Grand Prix,monaco,Circuit de Monaco,Monte-Carlo,Monaco,2023-05-28,13:00:00Z
+2023_7,2023,7,Spanish Grand Prix,catalunya,Circuit de Barcelona-Catalunya,Montmeló,Spain,2023-06-04,13:00:00Z
+2023_8,2023,8,Canadian Grand Prix,villeneuve,Circuit Gilles Villeneuve,Montreal,Canada,2023-06-18,18:00:00Z
+2023_9,2023,9,Austrian Grand Prix,red_bull_ring,Red Bull Ring,Spielberg,Austria,2023-07-02,13:00:00Z
+2023_10,2023,10,British Grand Prix,silverstone,Silverstone Circuit,Silverstone,UK,2023-07-09,14:00:00Z
+2023_11,2023,11,Hungarian Grand Prix,hungaroring,Hungaroring,Budapest,Hungary,2023-07-23,13:00:00Z
+2023_12,2023,12,Belgian Grand Prix,spa,Circuit de Spa-Francorchamps,Spa,Belgium,2023-07-30,13:00:00Z
+2023_13,2023,13,Dutch Grand Prix,zandvoort,Circuit Park Zandvoort,Zandvoort,Netherlands,2023-08-27,13:00:00Z
+2023_14,2023,14,Italian Grand Prix,monza,Autodromo Nazionale di Monza,Monza,Italy,2023-09-03,13:00:00Z
+2023_15,2023,15,Singapore Grand Prix,marina_bay,Marina Bay Street Circuit,Marina Bay,Singapore,2023-09-17,12:00:00Z
+2023_16,2023,16,Japanese Grand Prix,suzuka,Suzuka Circuit,Suzuka,Japan,2023-09-24,05:00:00Z
+2023_17,2023,17,Qatar Grand Prix,losail,Losail International Circuit,Al Daayen,Qatar,2023-10-08,17:00:00Z
+2023_18,2023,18,United States Grand Prix,americas,Circuit of the Americas,Austin,USA,2023-10-22,19:00:00Z
+2023_19,2023,19,Mexico City Grand Prix,rodriguez,Autódromo Hermanos Rodríguez,Mexico City,Mexico,2023-10-29,20:00:00Z
+2023_20,2023,20,São Paulo Grand Prix,interlagos,Autódromo José Carlos Pace,São Paulo,Brazil,2023-11-05,17:00:00Z
+2023_21,2023,21,Las Vegas Grand Prix,vegas,Las Vegas Strip Street Circuit,Las Vegas,United States,2023-11-19,06:00:00Z
+2023_22,2023,22,Abu Dhabi Grand Prix,yas_marina,Yas Marina Circuit,Abu Dhabi,UAE,2023-11-26,13:00:00Z

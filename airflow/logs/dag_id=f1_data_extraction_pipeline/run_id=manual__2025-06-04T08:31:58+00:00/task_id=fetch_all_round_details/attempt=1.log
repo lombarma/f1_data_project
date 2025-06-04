@@ -1,0 +1,87 @@
+[2025-06-04T08:32:04.592+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-06-04T08:32:04.609+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: f1_data_extraction_pipeline.fetch_all_round_details manual__2025-06-04T08:31:58+00:00 [queued]>
+[2025-06-04T08:32:04.614+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: f1_data_extraction_pipeline.fetch_all_round_details manual__2025-06-04T08:31:58+00:00 [queued]>
+[2025-06-04T08:32:04.614+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-06-04T08:32:04.621+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): fetch_all_round_details> on 2025-06-04 08:31:58+00:00
+[2025-06-04T08:32:04.626+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'f1_data_extraction_pipeline', 'fetch_all_round_details', 'manual__2025-06-04T08:31:58+00:00', '--job-id', '23', '--raw', '--subdir', 'DAGS_FOLDER/f1_pipeline.py', '--cfg-path', '/tmp/tmpj30jq6o5']
+[2025-06-04T08:32:04.630+0000] {standard_task_runner.py:91} INFO - Job 23: Subtask fetch_all_round_details
+[2025-06-04T08:32:04.725+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=721) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-06-04T08:32:04.726+0000] {standard_task_runner.py:63} INFO - Started process 722 to run task
+[2025-06-04T08:32:04.748+0000] {task_command.py:426} INFO - Running <TaskInstance: f1_data_extraction_pipeline.fetch_all_round_details manual__2025-06-04T08:31:58+00:00 [running]> on host 98906ef28ad4
+[2025-06-04T08:32:04.786+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='f1_data_extraction_pipeline' AIRFLOW_CTX_TASK_ID='fetch_all_round_details' AIRFLOW_CTX_EXECUTION_DATE='2025-06-04T08:31:58+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-04T08:31:58+00:00'
+[2025-06-04T08:32:04.786+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-06-04T08:32:04.791+0000] {logging_mixin.py:188} INFO - Chaîne XCom brute pour rounds_list: '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]'
+[2025-06-04T08:32:04.792+0000] {logging_mixin.py:188} INFO - Extraction des résultats pour l'année 2023, rounds (liste parsée): [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+[2025-06-04T08:32:04.792+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 1 from https://ergast.com/api/f1/2023/1/results.json...
+[2025-06-04T08:32:04.792+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:04.911+0000] {logging_mixin.py:188} INFO - Results for round 1 of season 2023 saved to /opt/***/data/raw/2023/round_1_results.json
+[2025-06-04T08:32:04.912+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 2 from https://ergast.com/api/f1/2023/2/results.json...
+[2025-06-04T08:32:04.912+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:05.047+0000] {logging_mixin.py:188} INFO - Results for round 2 of season 2023 saved to /opt/***/data/raw/2023/round_2_results.json
+[2025-06-04T08:32:05.048+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 3 from https://ergast.com/api/f1/2023/3/results.json...
+[2025-06-04T08:32:05.049+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:05.524+0000] {logging_mixin.py:188} INFO - Results for round 3 of season 2023 saved to /opt/***/data/raw/2023/round_3_results.json
+[2025-06-04T08:32:05.527+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 4 from https://ergast.com/api/f1/2023/4/results.json...
+[2025-06-04T08:32:05.528+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:05.667+0000] {logging_mixin.py:188} INFO - Results for round 4 of season 2023 saved to /opt/***/data/raw/2023/round_4_results.json
+[2025-06-04T08:32:05.668+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 5 from https://ergast.com/api/f1/2023/5/results.json...
+[2025-06-04T08:32:05.669+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:05.796+0000] {logging_mixin.py:188} INFO - Results for round 5 of season 2023 saved to /opt/***/data/raw/2023/round_5_results.json
+[2025-06-04T08:32:05.797+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 6 from https://ergast.com/api/f1/2023/6/results.json...
+[2025-06-04T08:32:05.797+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:05.914+0000] {logging_mixin.py:188} INFO - Results for round 6 of season 2023 saved to /opt/***/data/raw/2023/round_6_results.json
+[2025-06-04T08:32:05.915+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 7 from https://ergast.com/api/f1/2023/7/results.json...
+[2025-06-04T08:32:05.915+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:06.026+0000] {logging_mixin.py:188} INFO - Results for round 7 of season 2023 saved to /opt/***/data/raw/2023/round_7_results.json
+[2025-06-04T08:32:06.028+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 8 from https://ergast.com/api/f1/2023/8/results.json...
+[2025-06-04T08:32:06.028+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:06.151+0000] {logging_mixin.py:188} INFO - Results for round 8 of season 2023 saved to /opt/***/data/raw/2023/round_8_results.json
+[2025-06-04T08:32:06.153+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 9 from https://ergast.com/api/f1/2023/9/results.json...
+[2025-06-04T08:32:06.153+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:06.301+0000] {logging_mixin.py:188} INFO - Results for round 9 of season 2023 saved to /opt/***/data/raw/2023/round_9_results.json
+[2025-06-04T08:32:06.302+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 10 from https://ergast.com/api/f1/2023/10/results.json...
+[2025-06-04T08:32:06.302+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:06.426+0000] {logging_mixin.py:188} INFO - Results for round 10 of season 2023 saved to /opt/***/data/raw/2023/round_10_results.json
+[2025-06-04T08:32:06.427+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 11 from https://ergast.com/api/f1/2023/11/results.json...
+[2025-06-04T08:32:06.427+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:06.554+0000] {logging_mixin.py:188} INFO - Results for round 11 of season 2023 saved to /opt/***/data/raw/2023/round_11_results.json
+[2025-06-04T08:32:06.555+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 12 from https://ergast.com/api/f1/2023/12/results.json...
+[2025-06-04T08:32:06.556+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:06.678+0000] {logging_mixin.py:188} INFO - Results for round 12 of season 2023 saved to /opt/***/data/raw/2023/round_12_results.json
+[2025-06-04T08:32:06.679+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 13 from https://ergast.com/api/f1/2023/13/results.json...
+[2025-06-04T08:32:06.679+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:07.648+0000] {logging_mixin.py:188} INFO - Results for round 13 of season 2023 saved to /opt/***/data/raw/2023/round_13_results.json
+[2025-06-04T08:32:07.651+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 14 from https://ergast.com/api/f1/2023/14/results.json...
+[2025-06-04T08:32:07.652+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:07.782+0000] {logging_mixin.py:188} INFO - Results for round 14 of season 2023 saved to /opt/***/data/raw/2023/round_14_results.json
+[2025-06-04T08:32:07.783+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 15 from https://ergast.com/api/f1/2023/15/results.json...
+[2025-06-04T08:32:07.784+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:07.904+0000] {logging_mixin.py:188} INFO - Results for round 15 of season 2023 saved to /opt/***/data/raw/2023/round_15_results.json
+[2025-06-04T08:32:07.905+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 16 from https://ergast.com/api/f1/2023/16/results.json...
+[2025-06-04T08:32:07.906+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:08.024+0000] {logging_mixin.py:188} INFO - Results for round 16 of season 2023 saved to /opt/***/data/raw/2023/round_16_results.json
+[2025-06-04T08:32:08.025+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 17 from https://ergast.com/api/f1/2023/17/results.json...
+[2025-06-04T08:32:08.025+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:08.141+0000] {logging_mixin.py:188} INFO - Results for round 17 of season 2023 saved to /opt/***/data/raw/2023/round_17_results.json
+[2025-06-04T08:32:08.142+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 18 from https://ergast.com/api/f1/2023/18/results.json...
+[2025-06-04T08:32:08.143+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:08.265+0000] {logging_mixin.py:188} INFO - Results for round 18 of season 2023 saved to /opt/***/data/raw/2023/round_18_results.json
+[2025-06-04T08:32:08.267+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 19 from https://ergast.com/api/f1/2023/19/results.json...
+[2025-06-04T08:32:08.267+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:08.380+0000] {logging_mixin.py:188} INFO - Results for round 19 of season 2023 saved to /opt/***/data/raw/2023/round_19_results.json
+[2025-06-04T08:32:08.381+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 20 from https://ergast.com/api/f1/2023/20/results.json...
+[2025-06-04T08:32:08.381+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:08.495+0000] {logging_mixin.py:188} INFO - Results for round 20 of season 2023 saved to /opt/***/data/raw/2023/round_20_results.json
+[2025-06-04T08:32:08.496+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 21 from https://ergast.com/api/f1/2023/21/results.json...
+[2025-06-04T08:32:08.497+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:08.613+0000] {logging_mixin.py:188} INFO - Results for round 21 of season 2023 saved to /opt/***/data/raw/2023/round_21_results.json
+[2025-06-04T08:32:08.614+0000] {logging_mixin.py:188} INFO - Fetching F1 race results for 2023 round 22 from https://ergast.com/api/f1/2023/22/results.json...
+[2025-06-04T08:32:08.615+0000] {logging_mixin.py:188} INFO - Data will be saved relative to: /opt/***/data/raw
+[2025-06-04T08:32:08.726+0000] {logging_mixin.py:188} INFO - Results for round 22 of season 2023 saved to /opt/***/data/raw/2023/round_22_results.json
+[2025-06-04T08:32:08.726+0000] {logging_mixin.py:188} INFO - Extraction des résultats de tous les rounds terminée pour l'année 2023.
+[2025-06-04T08:32:08.727+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-06-04T08:32:08.727+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-06-04T08:32:08.735+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=f1_data_extraction_pipeline, task_id=fetch_all_round_details, run_id=manual__2025-06-04T08:31:58+00:00, execution_date=20250604T083158, start_date=20250604T083204, end_date=20250604T083208
+[2025-06-04T08:32:08.759+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-06-04T08:32:08.774+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-06-04T08:32:08.774+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

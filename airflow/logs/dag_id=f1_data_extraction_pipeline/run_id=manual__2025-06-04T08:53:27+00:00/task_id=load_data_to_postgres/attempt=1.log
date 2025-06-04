@@ -1,0 +1,55 @@
+[2025-06-04T08:54:02.037+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-06-04T08:54:02.056+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: f1_data_extraction_pipeline.load_data_to_postgres manual__2025-06-04T08:53:27+00:00 [queued]>
+[2025-06-04T08:54:02.062+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: f1_data_extraction_pipeline.load_data_to_postgres manual__2025-06-04T08:53:27+00:00 [queued]>
+[2025-06-04T08:54:02.062+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-06-04T08:54:02.086+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_data_to_postgres> on 2025-06-04 08:53:27+00:00
+[2025-06-04T08:54:02.094+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'f1_data_extraction_pipeline', 'load_data_to_postgres', 'manual__2025-06-04T08:53:27+00:00', '--job-id', '32', '--raw', '--subdir', 'DAGS_FOLDER/f1_pipeline.py', '--cfg-path', '/tmp/tmppylmplyh']
+[2025-06-04T08:54:02.099+0000] {standard_task_runner.py:91} INFO - Job 32: Subtask load_data_to_postgres
+[2025-06-04T08:54:02.294+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=429) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-06-04T08:54:02.295+0000] {standard_task_runner.py:63} INFO - Started process 430 to run task
+[2025-06-04T08:54:02.332+0000] {task_command.py:426} INFO - Running <TaskInstance: f1_data_extraction_pipeline.load_data_to_postgres manual__2025-06-04T08:53:27+00:00 [running]> on host cd5b922ce643
+[2025-06-04T08:54:02.374+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='f1_data_extraction_pipeline' AIRFLOW_CTX_TASK_ID='load_data_to_postgres' AIRFLOW_CTX_EXECUTION_DATE='2025-06-04T08:53:27+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-04T08:53:27+00:00'
+[2025-06-04T08:54:02.375+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-06-04T08:54:02.380+0000] {logging_mixin.py:188} INFO - Début du chargement en base de données pour l'année 2024.
+[2025-06-04T08:54:02.380+0000] {logging_mixin.py:188} INFO - Nettoyage préalable : DELETE FROM results WHERE race_id LIKE '2024_%';
+[2025-06-04T08:54:02.390+0000] {base.py:84} INFO - Using connection ID 'f1_postgres_db' for task execution.
+[2025-06-04T08:54:02.393+0000] {sql.py:487} INFO - Running statement: DELETE FROM results WHERE race_id LIKE '2024_%';, parameters: None
+[2025-06-04T08:54:02.395+0000] {sql.py:496} INFO - Rows affected: 179
+[2025-06-04T08:54:02.396+0000] {logging_mixin.py:188} INFO - Nettoyage préalable : DELETE FROM races WHERE year = 2024;
+[2025-06-04T08:54:02.400+0000] {base.py:84} INFO - Using connection ID 'f1_postgres_db' for task execution.
+[2025-06-04T08:54:02.403+0000] {sql.py:487} INFO - Running statement: DELETE FROM races WHERE year = 2024;, parameters: None
+[2025-06-04T08:54:02.404+0000] {sql.py:496} INFO - Rows affected: 24
+[2025-06-04T08:54:02.405+0000] {logging_mixin.py:188} INFO - 
+--- Début du traitement pour circuits_info.csv vers table circuits ---
+[2025-06-04T08:54:02.411+0000] {base.py:84} INFO - Using connection ID 'f1_postgres_db' for task execution.
+[2025-06-04T08:54:02.442+0000] {logging_mixin.py:188} INFO - Info: Clé dupliquée (PKEY) dans la dimension 'circuits' (données déjà présentes).
+[2025-06-04T08:54:02.444+0000] {logging_mixin.py:188} INFO - --- Résultat pour circuits_info.csv: Succès ---
+[2025-06-04T08:54:02.447+0000] {logging_mixin.py:188} INFO - 
+--- Début du traitement pour drivers.csv vers table drivers ---
+[2025-06-04T08:54:02.498+0000] {base.py:84} INFO - Using connection ID 'f1_postgres_db' for task execution.
+[2025-06-04T08:54:02.554+0000] {logging_mixin.py:188} INFO - Info: Clé dupliquée (PKEY) dans la dimension 'drivers' (données déjà présentes).
+[2025-06-04T08:54:02.555+0000] {logging_mixin.py:188} INFO - --- Résultat pour drivers.csv: Succès ---
+[2025-06-04T08:54:02.559+0000] {logging_mixin.py:188} INFO - 
+--- Début du traitement pour constructors.csv vers table constructors ---
+[2025-06-04T08:54:02.581+0000] {base.py:84} INFO - Using connection ID 'f1_postgres_db' for task execution.
+[2025-06-04T08:54:02.601+0000] {logging_mixin.py:188} INFO - Info: Clé dupliquée (PKEY) dans la dimension 'constructors' (données déjà présentes).
+[2025-06-04T08:54:02.602+0000] {logging_mixin.py:188} INFO - --- Résultat pour constructors.csv: Succès ---
+[2025-06-04T08:54:02.602+0000] {logging_mixin.py:188} INFO - 
+--- Début du traitement pour races_schedule.csv vers table races ---
+[2025-06-04T08:54:02.614+0000] {base.py:84} INFO - Using connection ID 'f1_postgres_db' for task execution.
+[2025-06-04T08:54:02.634+0000] {logging_mixin.py:188} INFO - Données de /opt/***/data/processed/2024/races_schedule.csv chargées avec succès dans la table races.
+[2025-06-04T08:54:02.634+0000] {logging_mixin.py:188} INFO - --- Résultat pour races_schedule.csv: Succès ---
+[2025-06-04T08:54:02.635+0000] {logging_mixin.py:188} INFO - 
+--- Début du traitement pour detailed_results.csv vers table results ---
+[2025-06-04T08:54:02.645+0000] {base.py:84} INFO - Using connection ID 'f1_postgres_db' for task execution.
+[2025-06-04T08:54:02.674+0000] {logging_mixin.py:188} INFO - Données de /opt/***/data/processed/2024/detailed_results.csv chargées avec succès dans la table results.
+[2025-06-04T08:54:02.675+0000] {logging_mixin.py:188} INFO - --- Résultat pour detailed_results.csv: Succès ---
+[2025-06-04T08:54:02.675+0000] {logging_mixin.py:188} INFO - 
+Valeur finale de overall_success avant le check: True
+[2025-06-04T08:54:02.676+0000] {logging_mixin.py:188} INFO - Chargement en base de données pour l'année 2024 terminé SANS ERREUR FINALE.
+[2025-06-04T08:54:02.676+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-06-04T08:54:02.677+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-06-04T08:54:02.689+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=f1_data_extraction_pipeline, task_id=load_data_to_postgres, run_id=manual__2025-06-04T08:53:27+00:00, execution_date=20250604T085327, start_date=20250604T085402, end_date=20250604T085402
+[2025-06-04T08:54:02.728+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-06-04T08:54:02.748+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-06-04T08:54:02.750+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
