@@ -8,8 +8,7 @@ import pandas as pd
 
 def get_data_paths(year: int):
     """
-    Reconstruit DATA_PROCESSED_PATH selon la même logique que les scripts de transformation.
-    Renvoie un dict qui associe chaque table au chemin de son CSV pour l'année donnée.
+    Rebuild paths to the processed CSV files for a given year.
     """
     if os.getenv("AIRFLOW_HOME"):
         airflow_home = os.getenv("AIRFLOW_HOME")
@@ -30,7 +29,7 @@ def get_data_paths(year: int):
 
 def connect_to_postgres():
     """
-    Ouvre une connexion psycopg2 en lisant les variables d'environnement PG_...
+    Open a connection to PostgreSQL using environment variables.
     """
     pg_host     = os.getenv("PG_HOST", "localhost")
     pg_port     = os.getenv("PG_PORT", "5432")
@@ -39,7 +38,7 @@ def connect_to_postgres():
     pg_password = os.getenv("PG_PASSWORD")
 
     if not (pg_db and pg_user and pg_password):
-        print("❗ ERREUR : Les variables d'environnement PG_DATABASE, PG_USER et PG_PASSWORD doivent être définies.")
+        print("❗ ERROR : Environment variables PG_DATABASE, PG_USER and PG_PASSWORD must be set.")
         sys.exit(1)
 
     try:
@@ -52,13 +51,13 @@ def connect_to_postgres():
         )
         return conn
     except Exception as e:
-        print(f"❗ ERREUR de connexion à PostgreSQL : {e}")
+        print(f"❗ PostgreSQL Connexion Error : {e}")
         sys.exit(1)
 
 
 def upsert_circuits(cursor, csv_path: str):
     """
-    Lit circuits_info.csv et fait INSERT ... ON CONFLICT DO NOTHING.
+    Read circuits_info.csv and do INSERT ... ON CONFLICT DO NOTHING.
     """
     if not os.path.isfile(csv_path):
         print(f"⚠️  Fichier circuits manquant, skip: {csv_path}")
@@ -82,7 +81,7 @@ def upsert_circuits(cursor, csv_path: str):
 
 def upsert_drivers(cursor, csv_path: str):
     """
-    Lit drivers.csv et fait INSERT ... ON CONFLICT DO NOTHING.
+    Read drivers.csv and do INSERT ... ON CONFLICT DO NOTHING.
     """
     if not os.path.isfile(csv_path):
         print(f"⚠️  Fichier drivers manquant, skip: {csv_path}")
@@ -112,7 +111,7 @@ def upsert_drivers(cursor, csv_path: str):
 
 def upsert_constructors(cursor, csv_path: str):
     """
-    Lit constructors.csv et fait INSERT ... ON CONFLICT DO NOTHING.
+    and do constructors.csv and do INSERT ... ON CONFLICT DO NOTHING.
     """
     if not os.path.isfile(csv_path):
         print(f"⚠️  Fichier constructors manquant, skip: {csv_path}")
@@ -135,7 +134,7 @@ def upsert_constructors(cursor, csv_path: str):
 
 def upsert_races(cursor, csv_path: str):
     """
-    Lit races_schedule.csv et fait INSERT ... ON CONFLICT DO NOTHING sur race_id.
+    Read races_schedule.csv and do INSERT ... ON CONFLICT DO NOTHING sur race_id.
     """
     if not os.path.isfile(csv_path):
         print(f"⚠️  Fichier races manquant, skip: {csv_path}")
@@ -169,8 +168,8 @@ def upsert_races(cursor, csv_path: str):
 
 def upsert_results(cursor, csv_path: str):
     """
-    Lit detailed_results.csv et fait INSERT ... ON CONFLICT DO NOTHING
-    en se basant sur la contrainte unique (race_id, driver_id).
+    Read detailed_results.csv and do INSERT ... ON CONFLICT DO NOTHING
+    based on unique constraint (race_id, driver_id).
     """
     if not os.path.isfile(csv_path):
         print(f"⚠️  Fichier results manquant, skip: {csv_path}")
@@ -187,7 +186,6 @@ def upsert_results(cursor, csv_path: str):
         ON CONFLICT (race_id, driver_id) DO NOTHING;
     """
     for _, row in df.iterrows():
-        # Conversion type pour les colonnes numériques (uniquement si nécessaire)
         car_number      = int(row["car_number"]) if row.get("car_number") and row["car_number"].isdigit() else None
         grid_position   = int(row["grid_position"]) if row.get("grid_position") and row["grid_position"].isdigit() else None
         final_position  = int(row["final_position"]) if row.get("final_position") and row["final_position"].isdigit() else None
@@ -213,7 +211,7 @@ def upsert_results(cursor, csv_path: str):
 
 def load_year_into_postgres(year: int):
     """
-    Charge de façon idempotente toutes les tables d'une saison (circuits, races, drivers, constructors, results).
+    Load in an indopendent year of F1 data into PostgreSQL.
     """
     conn   = connect_to_postgres()
     cursor = conn.cursor()
@@ -236,10 +234,10 @@ def load_year_into_postgres(year: int):
 
     try:
         conn.commit()
-        print(f"\n🎉 Chargement terminé pour la saison {year}.")
+        print(f"\n🎉 Loading done for the year: {year}.")
     except Exception as e:
         conn.rollback()
-        print(f"❗ ERREUR lors du commit : {e}")
+        print(f"❗ ERROR while commit : {e}")
     finally:
         cursor.close()
         conn.close()
@@ -247,15 +245,15 @@ def load_year_into_postgres(year: int):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Charger les CSV traités d'une saison F1 dans PostgreSQL."
+        description="Load F1 data for a specific season into PostgreSQL database."
     )
     parser.add_argument(
         "year", type=int,
-        help="Année de la saison à charger (ex. 2024)"
+        help="The F1 season year to load into PostgreSQL (e.g., 2023)."
     )
     args = parser.parse_args()
     year = args.year
-    print(f"🔄 Démarrage du chargement pour la saison {year}...\n")
+    print(f"🔄 Beginning of the loading for {year}...\n")
     load_year_into_postgres(year)
 
 
